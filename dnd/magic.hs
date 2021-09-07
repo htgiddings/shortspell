@@ -27,7 +27,7 @@ instance Show Component where
     show c = case c of
                 Verbal -> "V"
                 Somatic -> "S"
-                Material -> "M" : material_description c
+                Material -> "M " : material_description c
 
 --Caster Class
 data Caster = ArcaneRouge | Bard | Cleric | Druid | Paladin | Ranger | Sorcerer
