@@ -1,26 +1,23 @@
-module DnD.Magic where
+module Magic (CastingRange, Component, Duration, EffectRange, Level, School, Spell) where
 
-import DnD.Gameplay
+import Gameplay (Damage)
 
 --Effect and Casting Ranges
 data Range = Range { feet :: Integer } deriving (Show, Eq, Ord)
-data CastingRange = Touch | Range deriving (Show, Eq)
-data EffectRange = Self | Range deriving (Show, Eq)
+data CastingRange = Touch | Range Integer deriving (Show, Eq)
+data EffectRange = Self | Range Integer deriving (Show, Eq)
 
---Duration
 data Duration = Reaction | Instantaneous | Concentration { minutes :: Integer }
                   deriving (Show, Eq)
 
---Level
 data Level = Cantrip | One | Two | Three | Four | Five | Six | Seven | Eight |
               Nine deriving (Show, Eq, Enum, Ord)
 
 --Wizard School
-data School = Abjuration | Conjuration | Divination | Enchantment | Evocation |
-              Illusion | Necromancy | Transmutation | Universal
-              deriving (Show, Eq, Enum)
+data School = Abjuration | Conjuration | Divination | Enchantment | Evocation | Illusion |
+              Necromancy | Transmutation | Universal
+                deriving (Show, Eq, Enum)
 
---Components
 data Component = Verbal | Somatic | Material { material_description :: String }
                     deriving (Eq, Enum)
 instance Show Component where
@@ -29,9 +26,8 @@ instance Show Component where
                 Somatic -> "S"
                 Material -> "M " : material_description c
 
---Caster Class
-data Caster = ArcaneRouge | Bard | Cleric | Druid | Paladin | Ranger | Sorcerer
-              Warlock | Wizard deriving (Show, Eq, Enum)
+data CasterClass = ArcaneRouge | Bard | Cleric | Druid | Paladin | Ranger | Sorcerer | Warlock |
+                    Wizard deriving (Show, Eq, Enum)
 
 --Upcasting Effects
 --data Upcast =

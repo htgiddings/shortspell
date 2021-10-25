@@ -1,5 +1,5 @@
 -- | The basics of gameplay relevant to spells, including dice rolls and damage
-module DnD.Gameplay where
+module Gameplay (Damage, DamageType, Die, Roll) where
 
 data Die = D4 | D6 | D8 | D10 | D12 | D20 deriving (Eq, Ord, Bounded)
 instance Enum Die where
